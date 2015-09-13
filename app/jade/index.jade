@@ -1,0 +1,28 @@
+doctype
+include ../jade/includes/_head.jade
+
+body
+  #container
+    h6
+      | Css circular text made simple using Jade and Sass!!!
+      | I wanted to explore circular text more after reading Lea Verou's
+      a(href = "http://www.amazon.com/CSS-Secrets-Solutions-Everyday-Problems/dp/1449372635/ref=sr_1_1?ie=UTF8&qid=1442131717&sr=8-1&keywords=css+secrets" target = "_blank")
+        |   CSS Secrets
+      | . I do agree on a number of levels, it would seem not ideal.
+    div.circular-text.one
+      each val, index in "circle of life".split('')
+        span(class='char' + index)= val
+
+    div.circular-text.two
+      each val, index in "hello sir".split('')
+        span(class='char' + index)= val
+
+    div.circular-text.three
+      each val, index in "hello ma'am".split('')
+        span(class='char' + index)= val
+
+
+
+    include ../jade/includes/_scripts.jade
+include ../jade/includes/_footer.jade
+

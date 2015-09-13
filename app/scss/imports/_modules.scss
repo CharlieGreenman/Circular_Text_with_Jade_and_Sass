@@ -1,0 +1,82 @@
+/*
+####################
+##### Modules ###### //any re-usable elements in your page
+####################
+*/
+
+$circ-txt-size: 150px;
+
+//mixin specifically made for this demo;
+@mixin center-elem($width, $height){
+
+  width: $width;
+  height: $height;
+  position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+
+//mixing specifically made for this demo
+@mixin num-elem($size){
+  float: left;
+  border-radius: 50%;
+  width: $size;
+  height: $size;
+}
+
+//chris epstein mixin https://gist.github.com/chriseppstein/8615d6dc847e10c72fe5
+@mixin rotated-text($num-letters: 14, $angle-span: 180deg, $angle-offset: 0deg) {
+$angle-per-char: $angle-span / $num-letters;
+  @for $i from 0 through $num-letters {
+    .char#{$i} {
+      transform: rotate($angle-offset + $angle-per-char * $i) translatex($circ-txt-size / 2);
+    }
+  }
+}
+
+#container{
+  //pixels very specific to demo
+  //please to change if you would like to fork
+  @include center-elem(450px, 214px);
+}
+
+h6{
+  text-align: justify;
+  font-family: monospace;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+}
+
+.circular-text{
+  @include num-elem($circ-txt-size);
+  &.one{
+    @include rotated-text(15, 360deg, 0deg);
+    box-shadow: 0 0 0 1em #993030 inset;
+  }
+  &.two{
+    @include rotated-text(9, 360deg, 0deg);
+    box-shadow: 0 0 0 1em #D6FF76 inset;
+    color: black;
+  }
+  &.three{
+    @include rotated-text(11, 360deg, 0deg);
+    box-shadow: 0 0 0 1em #CCCB7D inset;
+  }
+  color: white;
+  line-height: 1em;
+  font-family: monospace;
+  text-transform: uppercase;
+  span{
+    position: absolute;
+    height: $circ-txt-size;
+    width: $circ-txt-size;
+
+  }
+
+}
+
